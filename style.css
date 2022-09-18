@@ -1,0 +1,44 @@
+html, body {
+    height: 100%;
+}
+
+.title {
+    display: flex;
+    justify-content: center;
+    height: 15%;
+}
+
+.main {
+    display: flex;
+    justify-content: center;
+}
+
+.calculator {
+    display: grid;
+    border-radius: 10px;
+    border: 3px solid black;
+    top: 50%;
+    left: 50%;
+    width: 400px;
+}
+
+.screen {
+    border: 3px solid black;
+    border-radius: 5px;
+    text-align: right;
+    height: 100px;
+    width: 350px;
+    margin: 20px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin: 20px;
+}
+
+.grid button {
+    border: 3 px solid black;
+    height: 60px;
+    width: 60px;
+}
