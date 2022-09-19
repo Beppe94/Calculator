@@ -3,9 +3,10 @@ const screen = document.getElementById('screen')
 const clearBtn = document.getElementById('clear')
 const prevDisplay = document.getElementById('prevDisplay')
 const currDisplay = document.getElementById('currDisplay')
-const buttons = document.querySelectorAll('.grid button')
+const nums = document.querySelectorAll('.grid #num')
+const operations = document.querySelectorAll('.grid #operand')
 
-console.log(buttons)
+
 clearBtn.addEventListener('click', clear) 
 
 
