@@ -19,7 +19,7 @@ html, body {
     border: 3px solid black;
     top: 50%;
     left: 50%;
-    width: 400px;
+    width: 350px;
 }
 
 .screen {
@@ -27,14 +27,35 @@ html, body {
     border-radius: 5px;
     text-align: right;
     height: 100px;
-    width: 350px;
+    width: 300px;
     margin: 20px;
+}
+
+.prevScreen {
+    padding-top: 20px;
+    padding-right: 10px;
+}
+
+.currScreen {
+    padding-top: 40px;
+    padding-right: 10px;
+}
+
+.del {
+    text-align: center;
+}
+
+.del button {
+    width:140px;
+    height: 50px;
 }
 
 .grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    margin: 20px;
+    margin: 30px;
+    gap: 15px;
+    row-gap: 10px;
 }
 
 .grid button {
