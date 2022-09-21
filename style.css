@@ -23,21 +23,27 @@ html, body {
 }
 
 .screen {
+    position: relative;
     border: 3px solid black;
     border-radius: 5px;
     text-align: right;
     height: 100px;
     width: 300px;
     margin: 20px;
+    font-size: 30px;
 }
 
 .prevScreen {
-    padding-top: 20px;
+    position: absolute;
+    right: 0;
+    bottom: 50%;
     padding-right: 10px;
 }
 
 .currScreen {
-    padding-top: 40px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
     padding-right: 10px;
 }
 
