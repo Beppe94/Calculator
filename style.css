@@ -34,6 +34,7 @@ html, body {
 }
 
 .prevScreen {
+    font-size: 20px;
     position: absolute;
     right: 0;
     bottom: 50%;

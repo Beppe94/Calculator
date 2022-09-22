@@ -3,16 +3,17 @@ let secondNum = 0;
 let currOperation;
 let displayRefresh = false
 
-const grid = document.getElementById('grid');
-const screen = document.getElementById('screen');
 const clearBtn = document.getElementById('clear');
+const deleteBtn = document.getElementById('delete');
+const equalBtn = document.getElementById('equal');
 const prevDisplay = document.getElementById('prevDisplay');
 const currDisplay = document.getElementById('currDisplay');
 const nums = document.querySelectorAll('.grid #num');
 const operations = document.querySelectorAll('.grid #operand');
 
-
 clearBtn.addEventListener('click', clear);
+equalBtn.addEventListener('click', compute);
+deleteBtn.addEventListener('click', deleteNum)
 
 nums.forEach((button) => 
     button.addEventListener('click', () => setNumbers(button.textContent))
@@ -26,7 +27,10 @@ function setNumbers(num) {
     if(currDisplay.textContent == '0' || displayRefresh) 
         refresh()
     currDisplay.textContent += num
+}
 
+function deleteNum() {
+    currDisplay.textContent = currDisplay.textContent.toString().slice(0, -1)
 }
 
 function refresh() {
@@ -62,6 +66,10 @@ function compute() {
     currOperation = null
 }
 
+function roundRes(n) {
+    return Math.round(n * 1000) / 1000
+}
+
 function sum(a, b) {
     return a + b
 }
@@ -78,3 +86,21 @@ function divide(a, b) {
     return a / b
 }
 
+function evaluate(operator, a, b) {
+    a = Number(a)
+    b = Number(b)
+
+    if(operator === '+') {
+        return sum(a,b)
+    } else if(operator === '-') {
+        return subtract(a, b)
+    } else if(operator === '*') {
+        return multiply(a, b)
+    } else if(operator === '/') {
+        if(b === 0) {
+            return null
+        } else {
+            return divide(a, b)
+        }
+    }
+}
