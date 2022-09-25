@@ -42,10 +42,12 @@ function refresh() {
 }
 
 function point() {  
+    if(currDisplay.textContent.includes('.')) return
+
     if(currDisplay.textContent === '') {
-        currDisplay.append('0.')
+        currDisplay.textContent += '0.'
     } else if(currDisplay.textContent) {
-        currDisplay.append('.')
+        currDisplay.textContent += '.'
     }
 }
 
