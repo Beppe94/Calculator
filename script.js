@@ -10,20 +10,23 @@ const prevDisplay = document.getElementById('prevDisplay');
 const currDisplay = document.getElementById('currDisplay');
 const nums = document.querySelectorAll('.grid #num');
 const operations = document.querySelectorAll('.grid #operand');
+const dotBtn = document.getElementById('point')
 
+window.addEventListener('keydown', keyboardInput)
 clearBtn.addEventListener('click', clear);
 equalBtn.addEventListener('click', compute);
 deleteBtn.addEventListener('click', deleteNum)
+dotBtn.addEventListener('click', point)
 
 nums.forEach((button) => 
-    button.addEventListener('click', () => setNumbers(button.textContent))
+    button.addEventListener('click', () => setNumber(button.textContent))
 )
 
 operations.forEach((button) => 
     button.addEventListener('click', () => setOperand(button.textContent))
 )
 
-function setNumbers(num) {
+function setNumber(num) {
     if(currDisplay.textContent == '0' || displayRefresh) 
         refresh()
     currDisplay.textContent += num
@@ -36,6 +39,14 @@ function deleteNum() {
 function refresh() {
     currDisplay.textContent = ''
     displayRefresh = false
+}
+
+function point() {  
+    if(currDisplay.textContent === '') {
+        currDisplay.append('0.')
+    } else if(currDisplay.textContent) {
+        currDisplay.append('.')
+    }
 }
 
 function clear() {
@@ -60,6 +71,7 @@ function compute() {
         alert('Can\'t divide by 0!')
         return
     }
+
     secondNum = currDisplay.textContent
     currDisplay.textContent = roundRes(evaluate(currOperation, firstNum, secondNum))
     prevDisplay.textContent = `${firstNum} ${currOperation} ${secondNum} =`
@@ -84,6 +96,22 @@ function multiply(a, b) {
 
 function divide(a, b) {
     return a / b
+}
+
+function keyboardInput(e) {
+    if(e.key >= 0 && e.key <= 9) {
+        setNumber(e.key)
+    } else if(e.key == '.') {
+        point()
+    } else if(e.key == 'Enter') {
+        compute()
+    } else if(e.key == 'Backspace') {
+        deleteNum()
+    } else if(e.key == 'Escape') {
+        clear()
+    } else if(e.key == '+' || e.key == '-' || e.key == '*' || e.key == '/') {
+        setOperand(e.key)
+    }
 }
 
 function evaluate(operator, a, b) {
